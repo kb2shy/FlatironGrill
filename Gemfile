@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+gem 'json'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -37,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'yelp', require: 'yelp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

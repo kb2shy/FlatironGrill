@@ -1,0 +1,21 @@
+<% if logged_in? %>
+  <%= link_to "Logout", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", login_path %>
+  <br><br>
+  OR
+  <br><br>
+  <%= link_to "Sign Up", signup_path %>
+<% end %>
+
+<h1>Restaurants</h1>
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+      Price Range: <%= restaurant.price_range %><br>
+      Cuisine: <%= restaurant.food_type.name %>
+    </li>
+  <% end %>
+</ul>

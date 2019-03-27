@@ -1,0 +1,23 @@
+<h1><%= @user.name %></h1>
+<h3>AKA <%= @user.user_name %></h3>
+
+You've written <%= pluralize(@user.reviews.count, 'review') %>
+
+<h4>All Reviews</h4>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <b>Restaurant:</b> <%= review.restaurant.name %><br>
+      <b>Rating:</b> <%= review.rating %><br>
+      <b>Created:</b> <%= review.created_at.strftime("%B %d, %Y") %><br>
+      <% if review.created_at != review.updated_at %>
+        <b>Updated:</b> <%= review.updated_at.strftime("%B %d, %Y") %><br>
+      <% end %>
+      <%= review.content %><br>
+      <%= link_to "Edit", edit_review_path(review) %> - <%= link_to "Delete", review_path(review), method: :delete %>
+    </li><br>
+  <% end %>
+</ul>
+<!--
+<%= link_to "Log Out", logout_path, method: :delete %>
+-->

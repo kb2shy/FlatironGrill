@@ -37,3 +37,8 @@ JSON_PATHS.each do |json_path|
     end
   end
 end
+
+## Loads additional seed files in db/seeds ##
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+  load seed
+end

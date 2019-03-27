@@ -1,4 +1,4 @@
-<!-- Checking to see if logged in: Shows 'Logout' if logged in, 'Login' or 'Sign Up' if not -->
+<!-- Checking to see if logged in: Shows 'Logout' if logged in, 'Login' or 'Sign Up' if not
 <% if logged_in? %>
   <%= link_to "Logout", logout_path, method: :delete %><br><br>
   <%= link_to "Profile", user_path(@user) %>
@@ -9,6 +9,7 @@
   <br><br>
   <%= link_to "Sign Up", signup_path %>
 <% end %>
+//-->
 
 <h1>Restaurants</h1>
 

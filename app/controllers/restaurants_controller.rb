@@ -11,7 +11,12 @@ class RestaurantsController < ApplicationController
     @review = Review.new
     @user = current_user
     @reviews = Review.where(restaurant: @restaurant)
+
+    @favorite = Favorite.find_by(restaurant: @restaurant, user: @user)
+    #@favorite_exists = @favorite == [] ? false : true
+
     @rating = [1, 2, 3, 4, 5]
+
   end
 
 end

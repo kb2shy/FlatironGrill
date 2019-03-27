@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @user = current_user
   end
 
   def show
@@ -10,6 +11,7 @@ class RestaurantsController < ApplicationController
     @review = Review.new
     @user = current_user
     @reviews = Review.where(restaurant: @restaurant)
+    @rating = [1, 2, 3, 4, 5]
   end
 
 end

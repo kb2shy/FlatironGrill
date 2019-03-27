@@ -1,5 +1,7 @@
+<!-- Checking to see if logged in: Shows 'Logout' if logged in, 'Login' or 'Sign Up' if not -->
 <% if logged_in? %>
-  <%= link_to "Logout", logout_path, method: :delete %>
+  <%= link_to "Logout", logout_path, method: :delete %><br><br>
+  <%= link_to "Profile", user_path(@user) %>
 <% else %>
   <%= link_to "Login", login_path %>
   <br><br>

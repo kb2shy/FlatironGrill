@@ -3,49 +3,34 @@
 <% end %>
 
 <h1><%= @restaurant.name %></h1>
-Address: <h3><%= @restaurant.address %></h3>
-Price: <h3><%= @restaurant.price_range %></h3>
-Cuisine: <h3><%= @restaurant.food_type.name %></h3>
+Address: <h5><%= @restaurant.address %></h5>
+Price: <h5><%= @restaurant.price_range %></h5>
+Cuisine: <h5><%= @restaurant.food_type.name %></h5>
 
+<!-- Shows review form if logged in -->
 <% if logged_in? %>
   <%= form_for Review.new, :html => {:class => "form-group"}, :url => reviews_path do |f| %>
-    <%= f.label :content, "Write a Review" %><br>
-    <%= f.text_area :content %><br>
-    <%= f.label :rating %><br>
-    <%= f.collection_select :rating, @rating, :itself, :itself %>
-    <%= f.hidden_field :user_id, :value => @user.id %>
-    <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-    <%= f.submit "Post Review" %>
+      <%= f.label :content, "Write a Review" %><br>
+      <%= f.text_area :content %><br>
+      <%= f.label :rating %><br>
+      <%= f.collection_select :rating, @rating, :itself, :itself %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+      <%= f.submit "Post Review" %>
   <% end %>
 <% end %>
 
-<!--
-  <br><br>
 
-
+<div class="btn btn-primary btn-sm">
   <% if @favorite %>
-    <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete %>
+    <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete, :class => "btn" %>
   <% else %>
-    <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post %>
+    <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post, :class => "btn" %>
   <% end %>
-  <br><br>
-  <%= link_to "Log Out", logout_path %>
-<% end %>
+</div><br>
 
-<!--   <%= link_to "Log Out", logout_path, method: :delete %> -->
-<% else %>
-  <%= link_to "Login", login_path %>
 
-  <br><br>
-  OR
-  <br><br>
-  <%#= link_to "Sign Up", signup_path %>
-<%# end %>
--->
-
-<br><br>
 <!-- Prints out reviews if there are any -->
-
 <% if @reviews.any? %>
   <b>Reviews: </b><%= @reviews.count %><br>
   <b>Avg. Rating: </b><%= Review.avg_rating(@restaurant) %>
@@ -54,7 +39,7 @@ Cuisine: <h3><%= @restaurant.food_type.name %></h3>
       <li>
         User: <%= review.user.name %><br>
         Rating: <%= review.rating %><br>
-        Review: <%= review.content %><br>
+        <%= review.content %><br>
         Created: <%= review.created_at.strftime("%B %d, %Y") %><br>
         <% if review.created_at != review.updated_at %>
           Updated: <%= review.updated_at.strftime("%B %d, %Y") %><br>

@@ -1,14 +1,14 @@
 <!-- Checking to see if logged in: Shows 'Logout' if logged in, 'Login' or 'Sign Up' if not
-<% if logged_in? %>
-  <%= link_to "Logout", logout_path, method: :delete %><br><br>
-  <%= link_to "Profile", user_path(@user) %>
-<% else %>
-  <%= link_to "Login", login_path %>
+<%# if logged_in? %>
+  <%#= link_to "Logout", logout_path, method: :delete %><br><br>
+  <%#= link_to "Profile", user_path(@user) %>
+<%# else %>
+  <%#= link_to "Login", login_path %>
   <br><br>
   OR
   <br><br>
-  <%= link_to "Sign Up", signup_path %>
-<% end %>
+  <%#= link_to "Sign Up", signup_path %>
+<%# end %>
 //-->
 
 <h1>Restaurants</h1>
@@ -18,7 +18,8 @@
     <li>
       <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
       Price Range: <%= restaurant.price_range %><br>
-      Cuisine: <%= restaurant.food_type.name %>
+      Cuisine: <%= restaurant.food_type.name %><br>
+      Rating: <%= Review.avg_rating(restaurant) %> (Based on <%= pluralize(restaurant.reviews.count, 'review') %>)
     </li>
   <% end %>
 </ul>

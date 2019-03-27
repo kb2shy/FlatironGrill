@@ -3,7 +3,7 @@
 <% end %>
 
 <h3>Edit Your Review for <%= @review.restaurant.name %></h3>
-<h5>From
+<h5>From 
   <% if @review.created_at = @review.updated_at %>
     <%= @review.created_at.strftime("%B %d, %Y") %><br>
   <% else %>

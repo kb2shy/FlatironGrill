@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: [:new, :create]
-  # before_action :set_user, only: [:show, :create, :update, :destroy]
+  skip_before_action :authenticate_user, only: [:new, :create, :edit]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user = User.find(params[:id])
     @reviews = Review.where(user: @user)
   end
 
@@ -22,10 +21,24 @@ class UsersController < ApplicationController
     end
   end
 
+  # def edit
+  # end
+
   def update
+    if @user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      flash[:message] = @user.errors.full_messages
+      redirect_to edit_user_path(@user)
+    end
   end
 
   def destroy
+    Favorite.where(user: @user).destroy_all
+    Review.where(user: @user).destroy_all
+    @user.destroy
+    session.clear
+    redirect_to login_path
   end
 
   private

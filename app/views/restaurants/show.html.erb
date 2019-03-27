@@ -13,16 +13,26 @@
     <%= f.label :content, "Write a Review" %><br>
     <%= f.text_area :content %><br>
     <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+    <%= f.collection_select :rating, @rating, :itself, :itself %>
     <%= f.hidden_field :user_id, :value => @user.id %>
     <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
     <%= f.submit "Post Review" %>
   <% end %>
   <br><br>
-  <%= link_to "Log Out", logout_path %>
+  <%= link_to "Log Out", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Login", login_path %>
+  <br><br>
+  OR
+  <br><br>
+  <%= link_to "Sign Up", signup_path %>
 <% end %>
 
+<br><br>
+<!-- Prints out reviews if there are any -->
 <% if @reviews.any? %>
+  Reviews: <%= @reviews.count %><br>
+  Avg. Rating: <%= Review.avg_rating(@restaurant) %>
   <ul>
     <% @reviews.each do |review| %>
       <li>
@@ -30,7 +40,9 @@
         Rating: <%= review.rating %><br>
         Review: <%= review.content %><br>
         Created: <%= review.created_at.strftime("%B %d, %Y") %><br>
-        Updated: <%= review.updated_at.strftime("%B %d, %Y") %><br>
+        <% if review.created_at != review.updated_at %>
+          Updated: <%= review.updated_at.strftime("%B %d, %Y") %><br>
+        <% end %>
       </li>
     <% end %>
   </ul>

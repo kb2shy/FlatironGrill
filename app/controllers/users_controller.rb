@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   # before_action :set_user, only: [:show, :create, :update, :destroy]
 
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
+    @reviews = Review.where(user: @user)
   end
 
   def new

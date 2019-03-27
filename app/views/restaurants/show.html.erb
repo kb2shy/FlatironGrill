@@ -9,7 +9,7 @@
 
 
 <% if logged_in? %>
-  <%= form_for Review.new, :url => reviews_path do |f| %>
+  <%= form_for Review.new, :html => {:class => "form-group"}, :url => reviews_path do |f| %>
     <%= f.label :content, "Write a Review" %><br>
     <%= f.text_area :content %><br>
     <%= f.label :rating %><br>

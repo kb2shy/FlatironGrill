@@ -19,8 +19,16 @@
     <%= f.submit "Post Review" %>
   <% end %>
   <br><br>
+  <% if @favorite %>
+    <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete %>
+  <% else %>
+    <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post %>
+  <% end %>
+  <br><br>
   <%= link_to "Log Out", logout_path %>
 <% end %>
+
+
 
 <% if @reviews.any? %>
   <ul>

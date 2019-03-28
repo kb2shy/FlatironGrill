@@ -23,14 +23,10 @@
   <% end %>
 </form>
 
-
-
-<%#= form_tag(restaurants_path, method: :get) do %>
-
-    <%#= submit_tag "Apply" %>
-<%# end %>
-
-
+<!--------------- Result Message -------------------------->
+<% if @message %>
+  <%= pluralize(@restaurants.count, 'result') %>
+<% end %>
 
 <!--------------- List of Restaurants --------------------->
 <ul style="list-style: none; padding: 0px 10px 5px 0px; border: 10px;">

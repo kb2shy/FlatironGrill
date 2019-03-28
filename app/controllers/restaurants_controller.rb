@@ -21,6 +21,7 @@ class RestaurantsController < ApplicationController
       else
         @restaurants = Restaurant.all
       end
+      @message = true
     else
       @restaurants = Restaurant.all
     end

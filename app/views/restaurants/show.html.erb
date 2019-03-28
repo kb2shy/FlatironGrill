@@ -94,7 +94,7 @@
           <% if @reviews.any? %>
             <div class="">
               <b>Reviews: <%= @reviews.count %></b>
-              <b>Average rating: </b><!-- Will have average rating placed here -->
+              <b>Average rating: <%= Review.avg_rating(@restaurant) %></b>
             </div>
           <% end %>
         </div>

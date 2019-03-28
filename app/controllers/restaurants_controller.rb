@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.search(params[:search])
     @user = current_user
+    @price_range = [1, 2, 3, 4, 5]
   end
 
   def show

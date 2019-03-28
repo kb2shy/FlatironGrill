@@ -23,25 +23,23 @@
   <% end %>
 </form>
 
-
-
-<%#= form_tag(restaurants_path, method: :get) do %>
-
-    <%#= submit_tag "Apply" %>
-<%# end %>
-
-
-
-<!--------------- List of Restaurants --------------------->
-<ul style="list-style: none; padding: 0px 10px 5px 0px; border: 10px;">
-  <% @restaurants.each do |restaurant| %>
-    <li>
-      <div class="card" style="padding: 15px; border: 10px;">
-        <h5 class="card-title"><%= link_to restaurant.name, restaurant_path(restaurant) %></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Price Range: <%= restaurant.price_range %></h6>
-        <h6 class="card-subtitle mb-2 text-muted">Cuisine: <%= restaurant.food_type.name %></h6>
-        <h6 class="card-subtitle mb-2 text-muted">Rating: <%= Review.avg_rating(restaurant) %> (Based on <%= pluralize(restaurant.reviews.count, 'review') %>)</h6>
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h5 class="card-title"><%= link_to restaurant.name, restaurant_path(restaurant) %></h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Price Range: <%= restaurant.price_range %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Cuisine: <%= restaurant.food_type.name %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Rating: <%= Review.avg_rating(restaurant) %> (Based on <%= pluralize(restaurant.reviews.count, 'review') %>)</h6>
+          </div>
+        </div>
       </div>
-    </li>
-  <% end %>
-</ul>
+    <% end %>
+  </div>
+</div>
+
+

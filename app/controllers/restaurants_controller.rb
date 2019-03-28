@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.search(params[:search])
     @user = current_user
   end
 

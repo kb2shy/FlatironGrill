@@ -1,0 +1,67 @@
+<% stylesheet_link_tag 'application' %>
+<!--------------- Header --------------------->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col" id="header">
+      <h1 class="cover-heading" style="padding: 5px 10px 5px 15px; border: 10px;">
+        Restaurants
+        <small class="text-muted">near 3rd Ave WeWork</small>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<!--------------- Search Form --------------------->
+<div class="container">
+  <div class="row">
+    <div class="col" id="header">
+      <form class="form-inline center-block" role="form">
+        <%= form_tag(restaurants_path, method: :get) do %>
+          <%= text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2', placeholder: "Search by Cuisine" %>
+
+          <div class="input-group-append">
+          <%= submit_tag "Search", class: 'btn btn-primary mb-2' %>
+          </div>
+
+    <%= label_tag "Price Range" %>
+    <%= collection_check_boxes :restaurant, :price_range, @price_range, :itself, :itself %>
+
+    <%= label_tag "Rating (Equal to and Higher than)" %>
+    <%= collection_select :restaurant, :rating, @rating, :itself, :itself %>
+
+    <div class="input-group-append">
+    <%= submit_tag "Search", class: 'btn btn-primary mb-2' %>
+    </div>
+  </div>
+</div>
+
+
+
+<!--------------- Result Message -------------------------->
+<% if @message %>
+  <%= pluralize(@restaurants.count, 'result') %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h5 class="card-title"><%= link_to restaurant.name, restaurant_path(restaurant) %></h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Price Range: <%= restaurant.price_range %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Cuisine: <%= restaurant.food_type.name %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Rating: <%= Review.avg_rating(restaurant) %> (Based on <%= pluralize(restaurant.reviews.count, 'review') %>)</h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f232809f6a42e587f9eaea411e80d178393ef11d

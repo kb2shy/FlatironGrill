@@ -1,0 +1,30 @@
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
+<body class="text-center">
+  <div class="form-signin" style="margin: auto; max-width: 330px; padding: 15px">
+
+    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+
+    <%= form_for User.new, controller: 'users', action: 'create' do |f| %>
+
+      <%= f.label :name, class: 'sr-only' %>
+      <%= f.text_field :name, :placeholder => "Name", class: 'form-control' %>
+
+      <%= f.label :user_name, class: 'sr-only' %>
+      <%= f.text_field :user_name, :placeholder => "Username", class: 'form-control' %>
+
+      <%= f.label :password, class: 'sr-only' %>
+      <%= f.password_field :password, :placeholder => "Password", class: 'form-control' %>
+
+      <%= f.label :password_confirmation, class: 'sr-only' %>
+      <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", class: 'form-control' %>
+      <br>
+      <%= f.submit "Sign up", :class => 'btn btn-log btn-primary btn-block' %>
+    <% end %>
+
+  </div>
+</body>
+
+<!-- form_for @order, :html => {:class => "foo"} -->

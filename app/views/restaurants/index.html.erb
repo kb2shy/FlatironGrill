@@ -10,6 +10,12 @@
   <%= form_tag(restaurants_path, method: :get) do %>
     <%= text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2', placeholder: "Search by Cuisine" %>
 
+    <%= label_tag "Price Range" %>
+    <%= collection_check_boxes :restaurant, :price_range, @price_range, :itself, :itself %>
+
+    <%= label_tag "Rating (Equal to and Higher than)" %>
+    <%= collection_select :restaurant, :rating, @rating, :itself, :itself %>
+
     <div class="input-group-append">
     <%= submit_tag "Search", class: 'btn btn-primary mb-2' %>
     </div>
@@ -37,17 +43,3 @@
 </div>
 
 
-
-
-
-</div>
-<!--------------- List of Restaurants --------------------->
-<ul style="list-style: none; padding: 0px 10px 5px 0px; border: 10px;">
-
-    <li>
-      <div class="card" style="padding: 15px; border: 10px;">
-
-
-    </li>
-
-</ul>

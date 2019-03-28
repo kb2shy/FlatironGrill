@@ -1,7 +1,19 @@
 // Place all the styles related to the Restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.border-top {
-  border-style: solid;
-  border-width: medium;
+#header {
+  width: 100%;
+  text-align: center;
+}
+
+.row {
+  margin: auto;
+  padding: 10px;
+}
+
+.border-1 {
+  border-style: solid !important;
+  border-color: #007bff !important;
+  border-width: thick !important;
+  border-radius: 10px;
 }

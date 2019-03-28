@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/restaurants/show.css">
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
 
 <% if flash[:message] %>
   <%= flash[:message] %>
@@ -79,19 +79,18 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12 border-top">
+		<div class="col-md-4 border border-1">
       <!-- Prints out reviews if there are any -->
       <% if @reviews.any? %>
-        <div class="">
-          <b>Reviews: <%= @reviews.count %></b>
-          <b>Average rating: </b><!-- Will have average rating placed here -->
+        <div>
+          <b>Reviews: <%= @reviews.count %></b><br>
         </div>
       <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-12 border-top">
+    <div class="col-md-8 border border-1">
       <% if @reviews.any? %>
       <dl>
         <% @reviews.each do |review| %>

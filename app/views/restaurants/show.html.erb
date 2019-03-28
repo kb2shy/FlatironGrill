@@ -1,129 +1,117 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <% if flash[:message] %>
-      <%= flash[:message] %>
-    <% end %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/restaurants/show.css">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta charset="utf-8">
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
 
-    <link rel="stylesheet" type="text/css" href="show.css">
-    <title></title>
-  </head>
-  <body>
-    <div class="container-fluid">
+<div class="container-fluid">
 
-    	<div class="row">
-    		<div class="col-md-12">
-    			<h3>
-    				<%= @restaurant.name %>
-    			</h3>
-    		</div>
-    	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				<%= @restaurant.name %>
+			</h3>
+		</div>
+	</div>
 
-    	<div class="row">
-    		<div class="col-md-4">
-          <img src="..." class="image" alt="...">
-    		</div>
-    		<div class="col-md-4">
-    			<dl>
-            <dt>
-    					Cuisine
-    				</dt>
-    				<dd>
-    					<%= @restaurant.food_type.name %>
-    				</dd>
-    				<dt>
-    					Address
-    				</dt>
-    				<dd>
-    					<%= @restaurant.address %>
-    				</dd>
-    				<dt>
-    					Price Range (1-4)
-    				</dt>
-    				<dd>
-    					<%= @restaurant.price_range %>
-    				</dd>
-    				<dt>
-    					Rating
-    				</dt>
-    				<dd>
-    					<%= Review.avg_rating(@restaurant) %>
-    				</dd>
-            <br>
-            <div class="btn btn-sm">
-              <% if @favorite %>
-                <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete, :class => "btn btn-danger" %>
-              <% else %>
-                <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post, :class => "btn btn-primary" %>
-              <% end %>
-            </div>
-    			</dl>
-    		</div>
-    		<div class="col-md-4">
-          <% if logged_in? %>
-          <dl>
-            <dt>
-              <%= form_for Review.new, :html => {:class => "form-group"}, :url => reviews_path do |f| %>
-                  Write a review
-    				</dt>
-    				<dd>
-    					<%= f.text_area :content, :class => "col", :style =>"height: 150px"%><br>
-    				</dd>
-            <dt>
-              Rating <%= f.collection_select :rating, @rating, :itself, :itself %>
-            </dt>
-            <dd>
-              <%= f.hidden_field :user_id, :value => @user.id %>
-              <%= f.hidden_field :restaurant_id, :value => @restaurant.id %><br>
-              <%= f.submit "Post Review", :class => "btn btn-primary"%>
-              <% end %>
-            </dd>
-          </dl>
-          <% end %>
-    		</div>
-    	</div>
-
-    	<div class="row">
-    		<div class="col-md-12 border-top">
-          <!-- Prints out reviews if there are any -->
-          <% if @reviews.any? %>
-            <div class="">
-              <b>Reviews: <%= @reviews.count %></b>
-              <b>Average rating: </b><!-- Will have average rating placed here -->
-            </div>
+	<div class="row">
+		<div class="col-md-4">
+      <img src="..." class="image" alt="...">
+		</div>
+		<div class="col-md-4">
+			<dl>
+        <dt>
+					Cuisine
+				</dt>
+				<dd>
+					<%= @restaurant.food_type.name %>
+				</dd>
+				<dt>
+					Address
+				</dt>
+				<dd>
+					<%= @restaurant.address %>
+				</dd>
+				<dt>
+					Price Range (1-4)
+				</dt>
+				<dd>
+					<%= @restaurant.price_range %>
+				</dd>
+				<dt>
+					Rating
+				</dt>
+				<dd>
+					<%= Review.avg_rating(@restaurant) %>
+				</dd>
+        <br>
+        <div class="btn btn-sm">
+          <% if @favorite %>
+            <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete, :class => "btn btn-danger" %>
+          <% else %>
+            <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post, :class => "btn btn-primary" %>
           <% end %>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 border-top">
-          <% if @reviews.any? %>
-          <dl>
-            <% @reviews.each do |review| %>
-            <dt>User: <%= review.user.name %></dt>
-            <dd>
-              Rating: <%= review.rating %><br>
-            </dd>
-            <dd>
-              <%= review.content %><br>
-            </dd>
-            <dd>
-              Created: <%= review.created_at.strftime("%B %d, %Y") %><br>
-              <% if review.created_at != review.updated_at %>
-              Updated: <%= review.updated_at.strftime("%B %d, %Y") %><br>
-              <% end %>
-            </dd>
-            <% end %>
-          </dl>
+			</dl>
+		</div>
+		<div class="col-md-4">
+      <% if logged_in? %>
+      <dl>
+        <dt>
+          <%= form_for Review.new, :html => {:class => "form-group"}, :url => reviews_path do |f| %>
+              Write a review
+				</dt>
+				<dd>
+					<%= f.text_area :content, :class => "col", :style =>"height: 150px"%><br>
+				</dd>
+        <dt>
+          Rating <%= f.collection_select :rating, @rating, :itself, :itself %>
+        </dt>
+        <dd>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <%= f.hidden_field :restaurant_id, :value => @restaurant.id %><br>
+          <%= f.submit "Post Review", :class => "btn btn-primary"%>
           <% end %>
-        </div>
-      </div>
+        </dd>
+      </dl>
+      <% end %>
+		</div>
+	</div>
 
+	<div class="row">
+		<div class="col-md-12 border-top">
+      <!-- Prints out reviews if there are any -->
+      <% if @reviews.any? %>
+        <div class="">
+          <b>Reviews: <%= @reviews.count %></b>
+          <b>Average rating: </b><!-- Will have average rating placed here -->
+        </div>
+      <% end %>
     </div>
-  </body>
-</html>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 border-top">
+      <% if @reviews.any? %>
+      <dl>
+        <% @reviews.each do |review| %>
+        <dt>User: <%= review.user.name %></dt>
+        <dd>
+          Rating: <%= review.rating %><br>
+        </dd>
+        <dd>
+          <%= review.content %><br>
+        </dd>
+        <dd>
+          Created: <%= review.created_at.strftime("%B %d, %Y") %><br>
+          <% if review.created_at != review.updated_at %>
+          Updated: <%= review.updated_at.strftime("%B %d, %Y") %><br>
+          <% end %>
+        </dd>
+        <% end %>
+      </dl>
+      <% end %>
+    </div>
+  </div>
+
+</div>

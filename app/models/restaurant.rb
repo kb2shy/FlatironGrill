@@ -7,7 +7,8 @@ class Restaurant < ApplicationRecord
 
   def self.search(search)
     if search
-      food_type = FoodType.find_by(name: search)
+       food_type = FoodType.where("LOWER(name) LIKE ?", "%#{search.downcase}%")
+      #food_type = FoodType.find_by(name: search)
       if food_type
         self.where(food_type: food_type)
       else

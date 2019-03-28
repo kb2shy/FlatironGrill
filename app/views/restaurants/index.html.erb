@@ -12,7 +12,12 @@
 //-->
 
 <h1>Restaurants</h1>
-
+<br>
+<%= form_tag(restaurants_path, method: :get) do %>
+  Cuisine type: <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag ("Search") %>
+<% end %>
+<br><br>
 <ul>
   <% @restaurants.each do |restaurant| %>
     <li>

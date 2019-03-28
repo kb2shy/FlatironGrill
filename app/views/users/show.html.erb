@@ -1,0 +1,90 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			<img alt="Bootstrap Image Preview" src="#" />
+		</div>
+		<div class="col-md-8">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>
+							True Name
+						</th>
+						<th>
+							User Name
+						</th>
+						<th>
+							Favorite Food
+						</th>
+            <th>
+              Number of Reviews Written
+            </th>
+						<th>
+							Member Since
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<%= @user.name %>
+						</td>
+						<td>
+							<%= @user.user_name %>
+						</td>
+						<td>
+							<%= @user.favorite_food_type %>
+						</td>
+            <td>
+              <%= @user.reviews.count %>
+            </td>
+						<td>
+							<%= @user.created_at.strftime("%B %d, %Y") %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+      <%= link_to "Edit", edit_user_path(@user) %> - <%= link_to "Delete", user_path(@user), method: :delete %>
+		</div>
+	</div>
+
+	<div class="row">
+    <div class="col-md-4">
+      <h3>Favorited Restaurants</h3>
+      <hr>
+      <% if @user.favorites.count != 0 %>
+        <ul>
+          <% @user.favorites.each do |favorite| %>
+            <li>
+              <%= link_to favorite.restaurant.name, restaurant_path(favorite.restaurant) %>
+            </li>
+          <% end %>
+        </ul>
+        <% else %>
+        <h4>You do not have any favorited restaurants.</h4>
+      <% end %>
+    </div>
+		<div class="col-md-8">
+      <h3>Reviews Written</h3>
+      <hr>
+      <% if @reviews.count != 0 %>
+        <ul>
+          <% @reviews.each do |review| %>
+            <li>
+              <b>Restaurant:</b> <%= review.restaurant.name %><br>
+              <b>Rating:</b> <%= review.rating %><br>
+              <b>Created:</b> <%= review.created_at.strftime("%B %d, %Y") %><br>
+              <% if review.created_at != review.updated_at %>
+                <b>Updated:</b> <%= review.updated_at.strftime("%B %d, %Y") %><br>
+              <% end %>
+              <%= review.content %><br>
+              <%= link_to "Edit", edit_review_path(review) %> - <%= link_to "Delete", review_path(review), method: :delete %>
+            </li><br>
+          <% end %>
+        </ul>
+        <% else %>
+        <h4>You have not written any reviews.</h4>
+      <% end %>
+		</div>
+	</div>
+</div>

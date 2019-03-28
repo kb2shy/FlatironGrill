@@ -2,15 +2,18 @@
   <%= flash[:message] %>
 <% end %>
 
-<h1>Log In</h1>
-<%= form_tag login_path do %>
-  <div class="form-group">
-    <%= label_tag :user_name, "Username" %>
-    <%= text_field_tag :user_name, "", class: 'form-control' %>
+<body class="text-center">
+  <div class="form-signin" style="margin: auto; max-width: 330px; padding: 15px">
+    <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+    <%= form_tag login_path do %>
+
+        <%= label_tag :user_name, "Username", class: "sr-only" %>
+        <%= text_field_tag :user_name, "", class: 'form-control', placeholder: 'Username' %>
+
+        <%= label_tag :user_name, "Password", class: "sr-only" %>
+        <%= password_field_tag :password, "", class: 'form-control', placeholder: 'Password' %>
+        <br>
+        <%= submit_tag 'Login', class: 'btn btn-lg btn-primary btn-block' %>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= label_tag :user_name, "Password" %>
-    <%= password_field_tag :password, "", class: 'form-control' %>
-  </div>
-    <%= submit_tag 'Login', class: 'btn btn-primary' %>
-<% end %>
+</body>

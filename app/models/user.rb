@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   has_many :reviews
   has_many :favorites
   has_many :restaurants, through: :favorites
@@ -10,16 +11,19 @@ class User < ApplicationRecord
 
   has_secure_password
 
+## Used to check if password is provided when editing user for validation ##
   def password_changed?
     !password.blank?
   end
 
+## Returns array of food types based on favorited restaurants ##
   def user_food_types(user)
     food_type_array = user.restaurants.map do |restaurant|
       restaurant.food_type.name
     end
   end
 
+## Returns hash of food types and instance counts ##
   def food_type_count(array)
     counts = Hash.new(0)
     array.each do |key|
@@ -28,6 +32,7 @@ class User < ApplicationRecord
     counts
   end
 
+## Returns most liked food type or string if no favorites ##
   def favorite_food_type
     food_type_array = user_food_types(self)
     count_hash = food_type_count(food_type_array)

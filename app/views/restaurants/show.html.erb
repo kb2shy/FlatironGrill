@@ -50,6 +50,7 @@
             <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete, :class => "btn btn-danger" %>
           <% else %>
             <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post, :class => "btn btn-primary" %>
+
           <% end %>
         </div>
 			</dl>

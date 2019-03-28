@@ -23,6 +23,11 @@
   <% end %>
 </form>
 
+<!--------------- Result Message -------------------------->
+<% if @message %>
+  <%= pluralize(@restaurants.count, 'result') %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <% @restaurants.each do |restaurant| %>

@@ -1,29 +1,35 @@
-<% if flash[:message] %>
-  <%= flash[:message] %>
-<% end %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
 
-<body class="text-center">
-  <div class="form-signin" style="margin: auto; max-width: 330px; padding: 100px 0px;">
+<div class="view" id="user_edit">
 
-    <h1 class="h3 mb-3 font-weight-normal">Edit</h1>
+  <% if flash[:message] %>
+    <%= flash[:message] %>
+  <% else %>
+    <br>
+  <% end %>
 
-    <%= form_for @user do |f| %>
+  <body class="text-center">
+    <div class="form-signin" style="margin: auto; max-width: 330px; padding: 100px 0px 213px;">
 
-      <%= f.label :name, class: 'sr-only' %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <h1 class="h3 mb-3 font-weight-normal">Edit</h1>
 
-      <%= f.label :user_name, class: 'sr-only' %>
-      <%= f.text_field :user_name, class: 'form-control' %>
-      <br>
-      <small class="form-text text-muted">Leave password blank to keep your old password</small>
-      <%= f.label :password, class: 'sr-only' %>
-      <%= f.password_field :password, :placeholder => "New Password", class: 'form-control' %>
+      <%= form_for @user do |f| %>
 
-      <%= f.label :password_confirmation, class: 'sr-only' %>
-      <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", class: 'form-control' %>
-      <br>
-      <%= f.submit "Edit", :class => 'btn btn-log btn-primary btn-block' %>
-    <% end %>
+        <%= f.label :name, class: 'sr-only' %>
+        <%= f.text_field :name, class: 'form-control' %>
 
-  </div>
-</body>
+        <%= f.label :user_name, class: 'sr-only' %>
+        <%= f.text_field :user_name, class: 'form-control' %>
+        <br>
+        <small class="form-text text-muted">Leave password blank to keep your old password</small>
+        <%= f.label :password, class: 'sr-only' %>
+        <%= f.password_field :password, :placeholder => "New Password", class: 'form-control' %>
+
+        <%= f.label :password_confirmation, class: 'sr-only' %>
+        <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", class: 'form-control' %>
+        <br>
+        <%= f.submit "Edit", :class => 'btn btn-log btn-primary btn-block' %>
+      <% end %>
+
+    </div>
+  </body>

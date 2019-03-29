@@ -73,7 +73,7 @@ module RestaurantsHelper
     "https://images.unsplash.com/photo-1515443961218-a51367888e4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
   ]
 
-  @sandwich_photos = [
+  @@sandwich_photos = [
     "https://images.unsplash.com/photo-1485451456034-3f9391c6f769?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
     "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80",
     "https://images.unsplash.com/photo-1509722747041-616f39b57569?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
@@ -81,7 +81,7 @@ module RestaurantsHelper
     "https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-1.2.1&auto=format&fit=crop&w=925&q=80"
   ]
 
-  @french_food_photos = [
+  @@french_food_photos = [
     "https://images.unsplash.com/photo-1462837019796-6f0204b48d95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
     "https://images.unsplash.com/photo-1477747219299-60f95c811fef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",

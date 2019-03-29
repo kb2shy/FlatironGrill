@@ -21,13 +21,22 @@ These are the key features and functionality built into the website:
   * Price Range
   * Rating
 
-
 ## Contributing
 Contributions are welcome in all shapes and forms, especially bug fixes and feature additions.
 To contribute, please fork the repository and create a separate branch that you can then commit and push.
 Thank you!
 
 ## Next Steps
+* Implement geolocation, maps, and markers
+* Contain more restaurant information:
+  * Menus
+  * Website
+  * Associations with delivery services
+  * Order online or via alternative ordering services
+* Allow users to share pictures within users' reviews
+* Restaurant specials and promotional alerts
+* Recommendations via collected data on users or suggestions made by other users
 
 ## Credits
 A project by [Chhaian Pin](https://github.com/kb2shy) and [Yutaro Tsuji](https://github.com/ytsuji27)
+All images collected royalty free from unsplash.com. We welcome review and feedback of our code.

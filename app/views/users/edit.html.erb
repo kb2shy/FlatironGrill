@@ -2,21 +2,28 @@
   <%= flash[:message] %>
 <% end %>
 
-<h1>Edit</h1>
+<body class="text-center">
+  <div class="form-signin" style="margin: auto; max-width: 330px; padding: 100px 0px;">
 
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
-  <br><br>
-  Leave password blank if you wish to keep your old password<br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <%= f.submit "Edit" %>
-<% end %>
+    <h1 class="h3 mb-3 font-weight-normal">Edit</h1>
+
+    <%= form_for @user do |f| %>
+
+      <%= f.label :name, class: 'sr-only' %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :user_name, class: 'sr-only' %>
+      <%= f.text_field :user_name, class: 'form-control' %>
+      <br>
+      <small class="form-text text-muted">Leave password blank to keep your old password</small>
+      <%= f.label :password, class: 'sr-only' %>
+      <%= f.password_field :password, :placeholder => "New Password", class: 'form-control' %>
+
+      <%= f.label :password_confirmation, class: 'sr-only' %>
+      <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", class: 'form-control' %>
+      <br>
+      <%= f.submit "Edit", :class => 'btn btn-log btn-primary btn-block' %>
+    <% end %>
+
+  </div>
+</body>

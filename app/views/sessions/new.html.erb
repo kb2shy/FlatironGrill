@@ -2,18 +2,20 @@
   <%= flash[:message] %>
 <% end %>
 
-<body class="text-center">
-  <div class="form-signin" style="margin: auto; max-width: 330px; padding: 100px 0px;">
-    <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
-    <%= form_tag login_path do %>
+<div class="view" style="background-image: url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); background-repeat: no-repeat; background-size: cover; background-position: center center; height: 100%; width: 100%;">
+  <body class="text-center">
+    <div class="form-signin" style="margin: auto; max-width: 330px; padding: 100px 0px;">
+      <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+      <%= form_tag login_path do %>
 
-        <%= label_tag :user_name, "Username", class: "sr-only" %>
-        <%= text_field_tag :user_name, "", class: 'form-control', placeholder: 'Username' %>
+          <%= label_tag :user_name, "Username", class: "sr-only" %>
+          <%= text_field_tag :user_name, "", class: 'form-control', placeholder: 'Username' %>
 
-        <%= label_tag :user_name, "Password", class: "sr-only" %>
-        <%= password_field_tag :password, "", class: 'form-control', placeholder: 'Password' %>
-        <br>
-        <%= submit_tag 'Login', class: 'btn btn-lg btn-primary btn-block' %>
-    <% end %>
-  </div>
-</body>
+          <%= label_tag :user_name, "Password", class: "sr-only" %>
+          <%= password_field_tag :password, "", class: 'form-control', placeholder: 'Password' %>
+          <br>
+          <%= submit_tag 'Login', class: 'btn btn-lg btn-primary btn-block' %>
+      <% end %>
+    </div>
+  </body>
+</div>

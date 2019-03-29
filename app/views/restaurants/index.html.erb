@@ -41,6 +41,8 @@
     <div class="col-md-2">
       <% if @message %>
         <%= pluralize(@restaurants.count, 'result') %>
+      <% else %>
+        <br>
       <% end %>
     </div>
   </div>

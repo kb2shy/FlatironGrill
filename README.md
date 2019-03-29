@@ -4,6 +4,10 @@ Flatiron Grill is a Ruby on Rails based website that helps tenants of the WeWork
 
 Data provided by [Yelp.com](https://www.yelp.com/)
 
+![Sign up page](https://github.com/kb2shy/mod2project/blob/master/app/assets/images/FlatironGrill001.png)
+
+![Log in page](https://github.com/kb2shy/mod2project/blob/master/app/assets/images/FlatironGrill002.png)
+
 ## Features
 These are the key features and functionality built into the website:
 * Search for restaurants based on a cuisine
@@ -20,6 +24,8 @@ These are the key features and functionality built into the website:
 * Filter search results by:
   * Price Range
   * Rating
+
+![Restaurant Page](https://github.com/kb2shy/mod2project/blob/master/app/assets/images/FlatironGrill003.png)  
 
 ## Contributing
 Contributions are welcome in all shapes and forms, especially bug fixes and feature additions.

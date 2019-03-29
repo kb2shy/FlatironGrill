@@ -1,4 +1,5 @@
 <% stylesheet_link_tag 'application' %>
+
 <!--------------- Header --------------------->
 <div class="container-fluid">
   <div class="row">
@@ -19,14 +20,14 @@
         <%= form_tag(restaurants_path, method: :get) do %>
           <%= text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2', placeholder: "Search by Cuisine" %>
 
-          <%= label_tag "Price Range" %>
+          <%= label_tag "Price Range " %>
           <%= collection_check_boxes :restaurant, :price_range, @price_range, :itself, :itself %>
 
           <%= label_tag "Rating (Equal to and Higher than)" %>
-          <%= collection_select :restaurant, :rating, @rating, :itself, :itself %>
+          <%= collection_select :restaurant, :rating, @rating, :itself, :itself , :class => "result_row" %>
 
-          <div class="input-group-append">
-          <%= submit_tag "Search", class: 'btn btn-primary mb-2' %>
+          <div class="input-group-append submit_button">
+          <%= submit_tag "Search", class: 'btn btn-primary mx-auto' %>
           </div>
         <% end %>
       </form>
@@ -34,13 +35,18 @@
   </div>
 </div>
 
-
-
 <!--------------- Result Message -------------------------->
-<% if @message %>
-  <%= pluralize(@restaurants.count, 'result') %>
-<% end %>
+<div class="container">
+  <div class="row" id="result_row">
+    <div class="col-md-2">
+      <% if @message %>
+        <%= pluralize(@restaurants.count, 'result') %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
+<!--------------- List of Restaurants -------------------------->
 <div class="container">
   <div class="row">
     <% @restaurants.each do |restaurant| %>

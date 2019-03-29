@@ -4,6 +4,22 @@
 #header {
   width: 100%;
   text-align: center;
+
+}
+
+#result_row {
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.submit_button {
+  width: 100%;
+  align-items: center;
 }
 
 .row {

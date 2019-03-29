@@ -19,104 +19,79 @@
 		<div class="col-md-4">
       <img src=<%= @photo %> class="image" alt="...">
 		</div>
+
+<!-------------- Restaurant Info  -------------->
 		<div class="col-md-4">
 			<dl>
-        <dt>
-					Cuisine
-				</dt>
-				<dd>
-					<%= @restaurant.food_type.name %>
-				</dd>
-				<dt>
-					Address
-				</dt>
-				<dd>
-					<%= @restaurant.address %>
-				</dd>
-				<dt>
-					Price Range (1-4)
-				</dt>
-				<dd>
-					<%= @restaurant.price_range %>
-				</dd>
-				<dt>
-					Rating
-				</dt>
-				<dd>
-					<%= Review.avg_rating(@restaurant) %>
-				</dd>
-        <br>
-        <div class="btn btn-sm">
-          <% if @favorite %>
-            <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete, :class => "btn btn-danger" %>
-          <% else %>
-            <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post, :class => "btn btn-primary" %>
+        <dt> Cuisine </dt>
+				<dd> <%= @restaurant.food_type.name %> </dd>
 
-          <% end %>
-        </div>
+				<dt> Address </dt>
+				<dd> <%= @restaurant.address %> </dd>
+
+				<dt> Price Range (0-3) </dt>
+				<dd> <%= @restaurant.price_range %> </dd>
+
+				<dt> Rating </dt>
+				<dd> <%= Review.avg_rating(@restaurant) %> </dd>
+
+        <% if @favorite %>
+          <%= link_to 'Unfavorite', favorite_path(@favorite), method: :delete, :class => "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Favorite", favorites_path(restaurant: @restaurant), method: :post, :class => "btn btn-primary" %>
+        <% end %>
 			</dl>
 		</div>
+
+<!-------------- Review Form if logged in  -------------->
 		<div class="col-md-4">
       <% if logged_in? %>
-      <dl>
-        <dt>
+        <dl>
           <%= form_for Review.new, :html => {:class => "form-group"}, :url => reviews_path do |f| %>
-              Write a review
-				</dt>
-				<dd>
-					<%= f.text_area :content, :class => "col", :style =>"height: 150px"%><br>
-				</dd>
-        <dt>
-          Rating <%= f.collection_select :rating, @rating, :itself, :itself %>
-        </dt>
-        <dd>
-          <%= f.hidden_field :user_id, :value => @user.id %>
-          <%= f.hidden_field :restaurant_id, :value => @restaurant.id %><br>
-          <%= f.submit "Post Review", :class => "btn btn-primary"%>
+            <dt> Write a review </dt>
+    				<dd> <%= f.text_area :content, :class => "col", :style =>"height: 150px"%> </dd>
+
+            <dt> Rating <%= f.collection_select :rating, @rating, :itself, :itself %> </dt>
+            <dd>
+            <%= f.hidden_field :user_id, :value => @user.id %>
+            <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+            </dd>
+            <%= f.submit "Post Review", :class => "btn btn-primary"%>
           <% end %>
-        </dd>
-      </dl>
+        </dl>
       <% end %>
 		</div>
+
 	</div>
 
+<!---------- Prints out review count if there are any ---------->
 	<div class="row">
 		<div class="col-md-4 border border-1">
-      <!-- Prints out reviews if there are any -->
       <% if @reviews.any? %>
-<<<<<<< HEAD
-        <div>
-          <b>Reviews: <%= @reviews.count %></b><br>
-=======
         <div class="">
           <b>Reviews: </b><%= @reviews.count %>
-          <b>Average rating: </b><%= Review.avg_rating(@restaurant) %>
->>>>>>> f232809f6a42e587f9eaea411e80d178393ef11d
         </div>
       <% end %>
     </div>
   </div>
 
+<!---------- Prints out reviews if there are any ---------->
   <div class="row">
     <div class="col-md-8 border border-1">
       <% if @reviews.any? %>
-      <dl>
-        <% @reviews.each do |review| %>
-        <dt>User: <%= review.user.name %></dt>
-        <dd>
-          Rating: <%= review.rating %><br>
-        </dd>
-        <dd>
-          <%= review.content %><br>
-        </dd>
-        <dd>
-          Created: <%= review.created_at.strftime("%B %d, %Y") %><br>
-          <% if review.created_at != review.updated_at %>
-          Updated: <%= review.updated_at.strftime("%B %d, %Y") %><br>
+        <dl>
+          <% @reviews.each do |review| %>
+            <dt> User: <%= review.user.name %> </dt>
+            <dd> Rating: <%= review.rating %><br>
+            Created: <%= review.created_at.strftime("%B %d, %Y") %><br>
+
+              <% if review.created_at != review.updated_at %>
+                Updated: <%= review.updated_at.strftime("%B %d, %Y") %>
+              <% end %>
+            </dd>
+            <dd> <%= review.content %> </dd><br>
           <% end %>
-        </dd>
-        <% end %>
-      </dl>
+        </dl>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
-			<img alt="Bootstrap Image Preview" src="#" />
+			<img alt="Bootstrap Image Preview" src="https://images.unsplash.com/photo-1501869150797-9bbb64f782fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
 		</div>
 		<div class="col-md-8">
 			<table class="table table-bordered">
@@ -71,7 +71,7 @@
         <ul>
           <% @reviews.each do |review| %>
             <li>
-              <b>Restaurant:</b> <%= review.restaurant.name %><br>
+              <b>Restaurant:</b> <%= link_to review.restaurant.name, restaurant_path(review.restaurant) %><br>
               <b>Rating:</b> <%= review.rating %><br>
               <b>Created:</b> <%= review.created_at.strftime("%B %d, %Y") %><br>
               <% if review.created_at != review.updated_at %>

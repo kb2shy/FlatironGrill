@@ -40,7 +40,7 @@ class User < ApplicationRecord
     if favorite == nil
       return "You don't have a favorite cuisine yet!"
     else
-      return "Your favorite cuisine is: #{favorite[0]}"
+      return "#{favorite[0]}"
     end
   end
 

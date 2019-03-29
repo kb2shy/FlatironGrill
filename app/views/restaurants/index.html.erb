@@ -1,33 +1,52 @@
+<% stylesheet_link_tag 'application' %>
 
 <!--------------- Header --------------------->
-<h1 class="cover-heading" style="padding: 5px 10px 5px 15px; border: 10px;">
-  Restaurants
-  <small class="text-muted">near 3rd Ave WeWork</small>
-</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col" id="header">
+      <h1 class="cover-heading">
+        Restaurants
+        <small class="text-muted">near 3rd Ave WeWork</small>
+      </h1>
+    </div>
+  </div>
+</div>
 
 <!--------------- Search Form --------------------->
-<form class="form-inline" style="padding: 5px 10px 5px 15px; border: 10px;">
-  <%= form_tag(restaurants_path, method: :get) do %>
-    <%= text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2', placeholder: "Search by Cuisine" %>
+<div class="container">
+  <div class="row">
+    <div class="col" id="header">
+      <form class="form" role="form">
+        <%= form_tag(restaurants_path, method: :get) do %>
+          <%= text_field_tag :search, params[:search], class: 'form-control mb-2 mr-sm-2', placeholder: "Search by Cuisine" %>
 
-    <%= label_tag "Price Range" %>
-    <%= collection_check_boxes :restaurant, :price_range, @price_range, :itself, :itself %>
+          <%= label_tag "Price Range " %>
+          <%= collection_check_boxes :restaurant, :price_range, @price_range, :itself, :itself %>
 
-    <%= label_tag "Rating (Equal to and Higher than)" %>
-    <%= collection_select :restaurant, :rating, @rating, :itself, :itself %>
+          <%= label_tag "Rating (Equal to and Higher than)" %>
+          <%= collection_select :restaurant, :rating, @rating, :itself, :itself , :class => "result_row" %>
 
-    <div class="input-group-append">
-    <%= submit_tag "Search", class: 'btn btn-primary mb-2' %>
+          <div class="input-group-append submit_button">
+          <%= submit_tag "Search", class: 'btn btn-primary mx-auto' %>
+          </div>
+        <% end %>
+      </form>
     </div>
-
-  <% end %>
-</form>
+  </div>
+</div>
 
 <!--------------- Result Message -------------------------->
-<% if @message %>
-  <%= pluralize(@restaurants.count, 'result') %>
-<% end %>
+<div class="container">
+  <div class="row" id="result_row">
+    <div class="col-md-2">
+      <% if @message %>
+        <%= pluralize(@restaurants.count, 'result') %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
+<!--------------- List of Restaurants -------------------------->
 <div class="container">
   <div class="row">
     <% @restaurants.each do |restaurant| %>
@@ -46,5 +65,3 @@
     <% end %>
   </div>
 </div>
-
-

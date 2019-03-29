@@ -64,6 +64,31 @@ module RestaurantsHelper
     "https://images.unsplash.com/photo-1516721049043-66daa54ed3cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
     "https://images.unsplash.com/photo-1500482176473-ccba10e1e880?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
   ]
+
+  @@seafood_photos = [
+    "https://images.unsplash.com/photo-1448043552756-e747b7a2b2b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=949&q=80",
+    "https://images.unsplash.com/photo-1542790246-93eacdb8f756?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1475905760530-a22eda0fb1b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1054&q=80",
+    "https://images.unsplash.com/photo-1515443961218-a51367888e4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+  ]
+
+  @sandwich_photos = [
+    "https://images.unsplash.com/photo-1485451456034-3f9391c6f769?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80",
+    "https://images.unsplash.com/photo-1509722747041-616f39b57569?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1543616153-d69a13f346ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-1.2.1&auto=format&fit=crop&w=925&q=80"
+  ]
+
+  @french_food_photos = [
+    "https://images.unsplash.com/photo-1462837019796-6f0204b48d95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1477747219299-60f95c811fef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1464306076886-da185f6a9d05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "https://images.unsplash.com/photo-1464500650248-1a4b45debb9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1161&q=80"
+  ]
+
   @@misc = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
 
 ## ----------------------- FOOD TYPE ARRAY ----------------------- ##
@@ -82,6 +107,12 @@ module RestaurantsHelper
   @@bars = ["Beer Bar", "Cocktail Bars", "Pubs", "Bars", "Sports Bars", "Beer, Wine & Spirits", "Sports Clubs"]
 
   @@spanish_foods = ["Tapas/Small Plates", "Argentine", "Spanish"]
+
+  @@seafood = ["Seafood", "Seafood Markets"]
+
+  @@sandwiches = ["Sandwiches"]
+
+  @@french_foods = ["French"]
 
 ## ------------------------- METHOD ------------------------------ ##
     def self.fetch_photo(restaurant)
@@ -103,6 +134,12 @@ module RestaurantsHelper
         @@bar_photos[num]
       elsif @@spanish_foods.include?(type)
         @@spanish_food_photos[num]
+      elsif @@seafood.include?(type)
+        @@seafood_photos[num]
+      elsif @@sandwiches.include?(type)
+        @@sandwich_photos[num]
+      elsif @@french_foods.include?(type)
+        @@french_food_photos[num]
       else
         @@misc
       end

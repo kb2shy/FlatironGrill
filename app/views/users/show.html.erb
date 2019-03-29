@@ -13,7 +13,7 @@ Member since <%= @user.created_at.strftime("%B %d, %Y") %><br>
   <ul>
     <% @reviews.each do |review| %>
       <li>
-        <b>Restaurant:</b> <%= review.restaurant.name %><br>
+        <b>Restaurant:</b> <%= link_to review.restaurant.name, restaurant_path(review.restaurant) %><br>
         <b>Rating:</b> <%= review.rating %><br>
         <b>Created:</b> <%= review.created_at.strftime("%B %d, %Y") %><br>
         <% if review.created_at != review.updated_at %>

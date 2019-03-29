@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user
+  helper RestaurantsHelper
 
   def index
     if params[:search]
@@ -37,6 +38,7 @@ class RestaurantsController < ApplicationController
     @reviews = Review.where(restaurant: @restaurant)
     @favorite = Favorite.find_by(restaurant: @restaurant, user: @user)
     @rating = [1, 2, 3, 4, 5]
+    @photo = RestaurantsHelper.fetch_photo(@restaurant)
   end
 
 end

@@ -45,4 +45,4 @@ Thank you!
 
 ## Credits
 A project by [Chhaian Pin](https://github.com/kb2shy) and [Yutaro Tsuji](https://github.com/ytsuji27)
-All images collected royalty free from unsplash.com. We welcome review and feedback of our code.
+<br>All images collected royalty free from unsplash.com. We welcome review and feedback of our code.

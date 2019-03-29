@@ -7,7 +7,7 @@ Data provided by [Yelp.com](https://www.yelp.com/)
 ## Features
 These are the key features and functionality built into the website:
 * Search for restaurants based on a cuisine
-* See the information for a specific restaurant:
+* View the information for a specific restaurant:
   * Cuisine
   * Address
   * Price Range
@@ -16,7 +16,11 @@ These are the key features and functionality built into the website:
 * Create user accounts which will add the functionality of:
   * Leaving reviews with rating
   * Favoriting restaurants
-  * Updating/Deleting user account
+  * Updating/Deleting user reviews, ratings, and account
+* Filter search results by:
+  * Price Range
+  * Rating
+
 
 ## Contributing
 Contributions are welcome in all shapes and forms, especially bug fixes and feature additions.
